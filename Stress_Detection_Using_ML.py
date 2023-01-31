@@ -1,14 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import numpy as np
 import pandas as pd
-
-
-# In[2]:
 
 
 #read the csv file
@@ -16,21 +10,12 @@ df=pd.read_csv("F:/6th Semester/Talent Battle/Week 3/stress.csv",encoding="latin
 df.head()
 
 
-# In[3]:
-
-
 df.isnull()
 #df.shape
 
 
-# In[4]:
-
-
 #It is under step5
 df.isnull().sum()
-
-
-# In[5]:
 
 
 #It os used for prepare the text column by the data cleaning means all unneccesary symbols will remove
@@ -57,9 +42,6 @@ def clean(text):
 df[ "text"] = df["text"]. apply(clean)
 
 
-# In[6]:
-
-
 import matplotlib. pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 text = " ". join(i for i in df. text)
@@ -69,9 +51,6 @@ plt. figure(figsize=(10, 10) )
 plt. imshow(wordcloud )
 plt. axis("off")
 plt. show( )
-
-
-# In[7]:
 
 
 from sklearn. feature_extraction. text import CountVectorizer
@@ -86,30 +65,17 @@ print(X)
 xtrain, xtest, ytrain, ytest = train_test_split(X, y,test_size=0.33)
 
 
-# In[8]:
-
 
 from sklearn.naive_bayes import BernoulliNB
 model=BernoulliNB()
 model.fit(xtrain,ytrain)
 
 
-# In[9]:
-
 
 user=input("Enter the text")
 data=cv.transform([user]).toarray()
 output=model.predict(data)
 print(output)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
